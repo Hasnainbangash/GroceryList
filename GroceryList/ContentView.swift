@@ -30,6 +30,15 @@ struct ContentView: View {
                         .foregroundStyle(item.isCompleted == false ? Color.primary : Color.accentColor)
                         .strikethrough(item.isCompleted)
                         .italic(item.isCompleted)
+                        .swipeActions {
+                            Button(role: .destructive) {
+                                withAnimation {
+                                    modelContext.delete(item)
+                                }
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
                 }
             }
             .navigationTitle("Grocery List")
