@@ -60,7 +60,7 @@ struct ContentView: View {
                 }
             }
             .safeAreaInset(edge: .bottom) {
-                VStack {
+                VStack(spacing: 12) {
                     TextField("", text: $item)
                         .textFieldStyle(.plain)
                         .padding(12)
@@ -74,7 +74,12 @@ struct ContentView: View {
                         item = ""
                     } label: {
                         Text("Save")
+                            .font(.title2.weight(.medium))
+                            .frame(maxWidth: .infinity)
                     }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.roundedRectangle)
+                    .controlSize(.extraLarge)
                 }
                 .padding()
                 .background(.bar)
