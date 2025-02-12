@@ -40,7 +40,7 @@ struct ContentView: View {
                             }
                         }
                         .swipeActions(edge: .leading) {
-                            Button("Done", systemImage: "checkmark.circle") {
+                            Button("Done", systemImage: item.isCompleted == false ? "checkmark.circle" : "x.circle") {
                                 item.isCompleted.toggle()
                             }
                         }
