@@ -62,7 +62,11 @@ struct ContentView: View {
             .safeAreaInset(edge: .bottom) {
                 VStack {
                     TextField("", text: $item)
-                        .textFieldStyle(.roundedBorder)
+                        .textFieldStyle(.plain)
+                        .padding(12)
+                        .background(.tertiary)
+                        .cornerRadius(12)
+                        .font(.title.weight(.light))
                     
                     Button {
                         let newItem = Item(title: item, isCompleted: false)
@@ -73,6 +77,7 @@ struct ContentView: View {
                     }
                 }
                 .padding()
+                .background(.bar)
             }
             .overlay {
                 if items.isEmpty {
