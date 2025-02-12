@@ -45,8 +45,8 @@ struct ContentView: View {
                             Button("Done", systemImage: item.isCompleted == false ? "checkmark.circle" : "x.circle") {
                                 item.isCompleted.toggle()
                             }
+                            .tint(item.isCompleted == false ? .green : .accentColor)
                         }
-                        .tint(item.isCompleted == false ? .green : .accentColor)
                 }
             }
             .navigationTitle("Grocery List")
@@ -65,7 +65,9 @@ struct ContentView: View {
                         .textFieldStyle(.roundedBorder)
                     
                     Button {
-                        
+                        let newItem = Item(title: item, isCompleted: false)
+                        modelContext.insert(newItem)
+                        item = ""
                     } label: {
                         Text("Save")
                     }
