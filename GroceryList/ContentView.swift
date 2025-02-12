@@ -30,7 +30,7 @@ struct ContentView: View {
                 .displayFrequency(.immediate)
             ])
         } catch {
-            print("Error Initializing TipKit \(error.localizedDescription)")
+            print("Error initializing TipKit \(error.localizedDescription)")
         }
     }
     
@@ -75,13 +75,15 @@ struct ContentView: View {
             }
             .navigationTitle("Grocery List")
             .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        addEssentialFoods()
-                    } label: {
-                        Image(systemName: "carrot")
+                if items.isEmpty {
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button {
+                            addEssentialFoods()
+                        } label: {
+                            Image(systemName: "carrot")
+                        }
+                        .popoverTip(buttonTip)
                     }
-                    .popoverTip(buttonTip)
                 }
             }
             .overlay {
