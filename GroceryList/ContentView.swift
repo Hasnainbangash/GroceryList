@@ -18,8 +18,24 @@ struct ContentView: View {
     
     let buttonTip = ButtonTip()
     
+    func setupTips() {
+        do {
+            // It resets the tips datastore to initial state for retesting
+            try Tips.resetDatastore()
+            // This shows all tips regardless of their display rule eligibility or displayfrequent status for UI testing of tips
+            Tips.showAllTipsForTesting()
+            // This will load and configure all tips with the default setting in our app
+            try Tips.configure([
+                // This will customize how often new tips are presented in our app after displaying another tip
+                .displayFrequency(.immediate)
+            ])
+        } catch {
+            print("Error Initializing TipKit \(error.localizedDescription)")
+        }
+    }
+    
     init() {
-        try? Tips.configure() // This will load and configure all tips with the default setting in our app
+        setupTips()
     }
     
     func addEssentialFoods() {
