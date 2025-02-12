@@ -65,6 +65,7 @@ struct ContentView: View {
                     } label: {
                         Image(systemName: "carrot")
                     }
+                    .popoverTip(buttonTip)
                 }
             }
             .overlay {
