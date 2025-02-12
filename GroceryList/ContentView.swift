@@ -38,7 +38,14 @@ struct ContentView: View {
         Item(title: "Cheese & Eggs", isCompleted: .random())
     ]
     
-    ContentView()
+    let container = try! ModelContainer(for: Item.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    
+    for item in sampleData {
+        container.mainContext.insert(item)
+    }
+    
+    return ContentView()
+        .modelContainer(container)
 }
 
 #Preview("Empty List") {
