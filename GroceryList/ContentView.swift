@@ -44,6 +44,7 @@ struct ContentView: View {
                                 item.isCompleted.toggle()
                             }
                         }
+                        .tint(item.isCompleted == false ? .green : .accentColor)
                 }
             }
             .navigationTitle("Grocery List")
