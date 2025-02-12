@@ -69,6 +69,10 @@ struct ContentView: View {
                         .font(.title.weight(.light))
                     
                     Button {
+                        guard !item.isEmpty else {
+                            return
+                        }
+                        
                         let newItem = Item(title: item, isCompleted: false)
                         modelContext.insert(newItem)
                         item = ""
